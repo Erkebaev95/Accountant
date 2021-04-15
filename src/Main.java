@@ -1,17 +1,14 @@
+import java.math.BigDecimal;
+
 public class Main {
     public static void main(String[] args) {
-        TaxService taxService;
-        VATaxType vaTaxType;
-        IncomeTaxType incomeTaxType;
-        ProgressiveTaxType progressiveTaxType;
-        Bill[] payments = new Bill[] {
-                new  Bill(100000, new VATaxType(), new TaxService()),
-                new  Bill(180000, new IncomeTaxType(), new TaxService()),
-                new  Bill(175000, new ProgressiveTaxType(), new TaxService()),
+        TaxService taxService = new TaxService();
+        Bill[] payments = new Bill[]{
+                new Bill(new BigDecimal("100000"), new VATaxType(), taxService),
+                new Bill(new BigDecimal("130000"), new ProgressiveTaxType(), taxService),
+                new Bill(new BigDecimal("70000"), new IncomeTaxType(), taxService)
         };
-
-        for (int i = 0; i < payments.length; ++i) {
-            Bill bill = payments[i];
+        for (Bill bill : payments) {
             bill.payTaxes();
         }
     }

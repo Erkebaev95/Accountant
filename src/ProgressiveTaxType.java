@@ -1,12 +1,11 @@
-public class ProgressiveTaxType extends TaxType{
+import java.math.BigDecimal;
+
+public class ProgressiveTaxType implements TaxType{
     @Override
-    public double calculateTaxFor(double amount) {
-        // Прогрессивный налог
-        if(amount <= 100000) {
-            return amount * 0.1;
-        } else if (amount > 100000) {
-            return amount * 0.15;
+    public BigDecimal calculateTaxFor(BigDecimal amount) {
+        if (amount.compareTo(new BigDecimal("100000")) <= 0) {
+            return amount.multiply(new BigDecimal("0.1"));
         }
-        return 0.0;
+        return amount.multiply(new BigDecimal("0.15"));
     }
 }

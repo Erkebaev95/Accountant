@@ -1,7 +1,8 @@
-public class VATaxType extends TaxType{
+import java.math.BigDecimal;
+
+public class VATaxType implements TaxType{
     @Override
-    public double calculateTaxFor(double amount) {
-        // НДС
-        return amount * 0.18;
+    public BigDecimal calculateTaxFor(BigDecimal amount) {
+        return amount.multiply(new BigDecimal("0.18"));
     }
 }

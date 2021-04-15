@@ -1,7 +1,8 @@
-public class IncomeTaxType extends TaxType{
+import java.math.BigDecimal;
+
+public class IncomeTaxType implements TaxType{
     @Override
-    public double calculateTaxFor(double amount) {
-        // Подоходный налог
-        return amount * 0.13;
+    public BigDecimal calculateTaxFor(BigDecimal amount) {
+        return amount.multiply(new BigDecimal("0.13"));
     }
 }

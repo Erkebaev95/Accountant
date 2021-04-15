@@ -1,16 +1,18 @@
-public class Bill {
-    private double amount;
-    private TaxType taxType;
-    private TaxService taxService;
+import java.math.BigDecimal;
 
-    public Bill(double amount, TaxType taxType, TaxService taxService) {
+public class Bill {
+    private final BigDecimal amount;
+    private final TaxType taxType;
+    private final TaxService taxService;
+
+    public Bill(BigDecimal amount, TaxType taxType, TaxService taxService) {
         this.amount = amount;
         this.taxType = taxType;
         this.taxService = taxService;
     }
 
     public void payTaxes() {
-        double taxAmount = this.taxType.calculateTaxFor(amount);
+        BigDecimal taxAmount = taxType.calculateTaxFor(amount);
         taxService.payOut(taxAmount);
     }
 }
