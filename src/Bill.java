@@ -1,3 +1,5 @@
+import tax_type.TaxType;
+
 import java.math.BigDecimal;
 
 public class Bill {

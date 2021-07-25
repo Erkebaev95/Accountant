@@ -1,6 +1,10 @@
+import tax_type.IncomeTaxType;
+import tax_type.ProgressiveTaxType;
+import tax_type.VATaxType;
+
 import java.math.BigDecimal;
 
-public class Main {
+public class Test {
     public static void main(String[] args) {
         TaxService taxService = new TaxService();
         Bill[] payments = new Bill[]{
